@@ -1,0 +1,34 @@
+
+
+.movie-list {
+    text-align: center;
+}
+.movie-list h1 {
+    font-size: 30px;
+    margin: 20px 0;
+}   
+.movieMiddle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.movieCard {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 250px;
+    text-align: center;
+}
+.movieCard img {
+    width: 100%;
+    height: 300px;
+}
+.movieCard h3 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+.movieCard p {
+    font-size: 16px;
+    margin: 10px 0;
+}

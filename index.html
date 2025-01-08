@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 
 <head>
     <meta charset="UTF-8">
@@ -29,12 +29,15 @@
         li:hover {
             background-color: #f9f9f9;
         }
+        
     </style>
 </head>
 
 <body>
     <header id="header" class="header">
-        <a href="index.html"><h1>Movie</h1></a>
+        <a href="index.html">
+            <h1>Movie</h1>
+        </a>
         <form id="search-form">
             <input type="text" id="search-input" placeholder="Search Movie">
         </form>
@@ -47,13 +50,15 @@
 
 
     <main>
-        <ul id="movie-list">
-            <li>Movie 1</li>
-            <li>Movie 2</li>
-            <li>Movie 3</li>
-            <li>Movie 4</li>
-            <li>Movie 5</li>
-        </ul>
+        <section id="movie-list" class="movie-list">
+            <h1>Movie List</h1>
+            <div id="movieListView" class="movieMiddle">
+                <!-- 
+                    javascript DOM 을 통해  레이아웃(HTML) 을 가져와서 
+                    뿌려준다.
+                -->
+            </div>
+        </section>
     </main>
 
 
@@ -78,7 +83,7 @@
             </ul>
         </div>
     </div>
-    
+
     <footer>
         <p>&copy; 2025 Movie</p>
     </footer>
