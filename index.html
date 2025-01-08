@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        li {
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header" class="header">
+        <a href="index.html"><h1>Movie</h1></a>
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Search Movie">
+        </form>
+        <nav>
+            <ul id="nav-list">
+                <li><a href="bookmark.html">BookMark</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+        <ul id="movie-list">
+            <li>Movie 1</li>
+            <li>Movie 2</li>
+            <li>Movie 3</li>
+            <li>Movie 4</li>
+            <li>Movie 5</li>
+        </ul>
+    </main>
+
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close" id="close">&times;</span>
+            <h2>Movie Details</h2>
+            <p id="movie-details"></p>
+        </div>
+    </div>
+
+    <div class="modal" id="bookmark-modal">
+        <div class="modal-content">
+            <span class="close" id="close-bookmark">&times;</span>
+            <h2>BookMark</h2>
+            <ul id="bookmark-list">
+                <li>Movie 1</li>
+                <li>Movie 2</li>
+                <li>Movie 3</li>
+                <li>Movie 4</li>
+                <li>Movie 5</li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Movie</p>
+    </footer>
+    <script src="JavaScript/Bookmark.js"></script>
+    <script src="JavaScript/Modal.js"></script>
+    <script src="JavaScript/Movie.js"></script>
+    <script src="JavaScript/Search.js"></script>
+    <script src="JavaScript/API.js"></script>
+
+</body>
+
+</html>
