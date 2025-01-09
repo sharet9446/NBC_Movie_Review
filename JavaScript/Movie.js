@@ -31,16 +31,17 @@ for (let i = 0; i < 5; i++) {
                     
             */
             const movieList = data.results;
-            for (let i = 0; i < movieList.length; i++) {
+
+            for (let j = 0; j < movieList.length; j++) {
                 document.getElementById('movieListView').innerHTML +=
                     `
                 <div class="movieCard">
-                <img src="https://image.tmdb.org/t/p/original${movieList[i].poster_path} " alt="${movieList[i].title}" class="movieImg">
+                <img src="https://image.tmdb.org/t/p/original${movieList[j].poster_path} " alt="${movieList[j].title}" class="movieImg">
                 
                 <div class="movieCarte">
-                <p class="movieTitle">${movieList[i].title}</p> 
+                <p class="movieTitle">${movieList[j].title}</p> 
                 
-                <span class="movieRate"><small>평점: ${movieList[i].vote_average}</small></span>
+                <span class="movieRate"><small>평점: ${movieList[j].vote_average}</small></span>
                 </div>
                 `;
             }
