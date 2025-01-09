@@ -6,33 +6,12 @@ header {
     padding: 10px;
 }
 
-h1 {
-    text-align: center;
-}
-
-form {
-    text-align: center;
-}
-
-input {
+#searchInput {
     width: 50%;
     height: 30px;
     padding: 5px;
     margin: 5px;
     border-radius: 5px;
-}
-
-button {
-    padding: 5px;
-    margin: 5px;
-}
-
-#nav-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
 }
 
 header a {
