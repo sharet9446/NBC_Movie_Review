@@ -1,4 +1,4 @@
-// Description: This file contains the code to search for movies.
+// 검색기능능
 document.querySelector('#searchForm').addEventListener('keyup', (event) => {
 
         const searcheName = event.target.value;
