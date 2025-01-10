@@ -1,4 +1,4 @@
-// 검색기능능
+// 검색기능
 document.querySelector('#searchForm').addEventListener('keyup', (event) => {
 
         const searcheName = event.target.value;
