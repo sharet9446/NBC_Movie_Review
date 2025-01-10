@@ -17,7 +17,7 @@
 <body>
 
     <header id="header" class="header">
-        <a href="index.html">
+        <a href="./">
             <h1>Movie</h1>
         </a>
         <form id="searchForm">
@@ -25,15 +25,16 @@
         </form>
         <nav>
             <ul id="navList">
-                <li><a href="bookmark.html">BookMark</a></li>
+                <li><a href="?bookmark">BookMark</a></li>
             </ul>
         </nav>
     </header>
 
 
     <main>
-        <section id="movie-list" class="movie-list">
+        <section id="movieList" class="movieList">
             <h1>실시간 영화 TOP 100</h1>
+            <div id="noResultsMessage">검색 결과가 없습니다.</div>
             <div id="movieListView" class="movieMiddle">
                 <!-- 
                     javascript DOM 을 통해  레이아웃(HTML) 을 가져와서 
@@ -43,20 +44,19 @@
         </section>
     </main>
 
-
     <div class="modal" id="modal">
-        <div class="modal-content">
+        <div class="modalContent">
             <span class="close" id="close">&times;</span>
             <h2>Movie Details</h2>
-            <p id="movie-details"></p>
+            <p id="movieDetails"></p>
         </div>
     </div>
 
-    <div class="modal" id="bookmark-modal">
-        <div class="modal-content">
-            <span class="close" id="close-bookmark">&times;</span>
+    <div class="modal" id="bookmarkModal">
+        <div class="modalContent">
+            <span class="close" id="closeBookmark">&times;</span>
             <h2>BookMark</h2>
-            <ul id="bookmark-list">
+            <ul id="bookmarkList">
                 <li>Movie 1</li>
                 <li>Movie 2</li>
                 <li>Movie 3</li>

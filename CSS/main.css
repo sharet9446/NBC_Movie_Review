@@ -1,11 +1,16 @@
-.movie-list {
+.movieList {
     text-align: center;
 }
 
-.movie-list h1 {
+.movieList h1 {
     font-size: 30px;
     padding: 20px 0px;
     margin: 0px;
+}
+
+#noResultsMessage {
+    display: none;
+    color: red;
 }
 
 .movieMiddle {

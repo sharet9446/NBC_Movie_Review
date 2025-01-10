@@ -15,7 +15,9 @@ const options = {
 };
 
 for (let i = 1; i < totalPages; i++) {
-    let url = `${baseUrl}${mediaType}/${category}?language=${language}&page=${i}timestamp=${Date.now()}`;
+    
+    let url = `${baseUrl}${mediaType}/${category}?language=${language}&page=${i}timestamp=${Date.now()}`; // API 주소
+
     // API 명세에 따라  options를  fetch()의 ()에 추가함
     fetch(url, options)
         .then(res => res.json())
@@ -33,9 +35,9 @@ for (let i = 1; i < totalPages; i++) {
                     요소내에  HTML을 가져오는 메소드인데 , 여기에서는 가져와서 붙여준다. 
                     
             */
-            let movieLists = data.results; // API에서 받아온 데이터 중 results를 movieList에 저장
+            let movieLists = data.results;
 
-            // movieLists에 있는 데이터를 하나씩 꺼내서 movieListView에 붙여줌
+            // movieLists 배열에 있는 데이터를 forEach() 메소드로 순회하면서 movieListView에 추가
             movieLists.forEach(movieList => {
                 movieListView.innerHTML +=
                     `
