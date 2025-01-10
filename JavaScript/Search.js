@@ -1,7 +1,7 @@
 //  검색 기능 구현 및 자동완성 기능 구현
 document.querySelector('#searchForm').addEventListener('keyup', (event) => {
     const movieTitle = document.querySelectorAll('.movieTitle');
-    let searchName = event.target.value.replace(/\s/g, "").toLowerCase(); // 공백 제거 및 소문자로 변경
+    let searchName = event.target.value.replace(/\s/g, "").toLowerCase(); // 검색어를 소문자로 변경
     let hasResult = false; // 검색 결과가 있는지 확인
 
     // 검색 결과가 있을 때 URL 변경
@@ -10,15 +10,15 @@ document.querySelector('#searchForm').addEventListener('keyup', (event) => {
 
     // 검색 기능 구현
     movieTitle.forEach(title => {
-        let trimTitle = title.innerText.replace(/[\s=:/()]/g, "").toLowerCase(); // 추가적으로 특수문자 제거
-        let movieCard = title.closest('.movieCard');
+        let trimTitle = title.innerText.replace(/[\s=:;/(){}'"|*!@.#$%&]/g, "").toLowerCase(); // 추가적으로 특수문자 제거
+        let movieCard = title.closest('.movieCard'); // 가장 가까운 movieCard 클래스 선택
 
         // 검색어가 포함된 영화 카드만 보여줌
-        if (trimTitle.includes(searchName)) {
-            movieCard.style.display = 'block';
+        if (trimTitle.includes(searchName)) { // 검색어가 포함되어 있으면
+            movieCard.style.display = 'block'; // 보여줌
             hasResult = true;  // 검색 결과가 있음
         } else {
-            movieCard.style.display = 'none';
+            movieCard.style.display = 'none'; // 없으면 숨김
         }
     })
 

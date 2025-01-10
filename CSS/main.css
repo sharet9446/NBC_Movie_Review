@@ -66,21 +66,3 @@
     margin: 10px 0;
     color: gray;
 }
-
-@media (max-width: 768px) {
-    .movieCard {
-        max-width: 200px;
-    }
-
-    .movieImg {
-        height: 250px;
-    }
-
-    .movieTitle {
-        font-size: 18px;
-    }
-
-    .movieRate {
-        font-size: 12px;
-    }
-}

@@ -36,7 +36,7 @@ for (let i = 1; i < totalPages; i++) {
                     
             */
             let movieLists = data.results;
-
+            
             // movieLists 배열에 있는 데이터를 forEach() 메소드로 순회하면서 movieListView에 추가
             movieLists.forEach(movieList => {
                 movieListView.innerHTML +=
