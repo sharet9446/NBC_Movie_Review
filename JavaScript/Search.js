@@ -1,33 +1,47 @@
-//  검색 기능 구현 및 자동완성 기능 구현
+
+
 document.querySelector('#searchForm').addEventListener('keyup', (event) => {
     const movieTitle = document.querySelectorAll('.movieTitle');
-    let searchName = event.target.value.replace(/\s/g, "").toLowerCase(); // 검색어를 소문자로 변경
-    let hasResult = false; // 검색 결과가 있는지 확인
+    const searchName = event.target.value.replace(/\s/g, "").toLowerCase();
+    let hasResult = false;
 
-    // 검색 결과가 있을 때 URL 변경
-    const newUrl = `${window.location.pathname}?search=${searchName}`;
-    history.pushState(null, '', newUrl);
-
-    // 검색 기능 구현
-    movieTitle.forEach(title => {
-        let trimTitle = title.innerText.replace(/[\s=:;/(){}'"|*!@.#$%&]/g, "").toLowerCase(); // 추가적으로 특수문자 제거
-        let movieCard = title.closest('.movieCard'); // 가장 가까운 movieCard 클래스 선택
-
-        // 검색어가 포함된 영화 카드만 보여줌
-        if (trimTitle.includes(searchName)) { // 검색어가 포함되어 있으면
-            movieCard.style.display = 'block'; // 보여줌
-            hasResult = true;  // 검색 결과가 있음
-        } else {
-            movieCard.style.display = 'none'; // 없으면 숨김
-        }
-    })
-
-    // 검색 결과가 없을 때 메시지 출력
-    const noResult = document.querySelector('#noResultsMessage');
-    if (!hasResult) {
-        noResult.style.display = 'block';
+    // URL 업데이트
+    if (!searchName) {
+        history.pushState(null, '', window.location.pathname);
     } else {
-        noResult.style.display = 'none';
+        let newUrl = `${window.location.pathname}?search=${searchName}`; // URL에 검색어 추가
+        history.pushState(null, '', newUrl);
     }
 
-})
+    // 검색 기능
+    movieTitle.forEach(title => {
+        const trimTitle = title.innerText.replace(/[\s=:;/(){}'"|*!@.#$%&]/g, "").toLowerCase();
+        const movieCard = title.closest('.movieCard');
+
+        if (trimTitle.includes(searchName)) {
+            movieCard.style.display = 'block';
+            hasResult = true;
+        } else {
+            movieCard.style.display = 'none';
+        }
+    });
+
+    noResultMessage(hasResult);
+});
+
+// 검색 결과 메시지 개선
+function noResultMessage(hasResult) {
+    const search = new URLSearchParams(window.location.search).get('search');
+    const noResult = document.querySelector('#noResultsMessage');
+
+    if (!search || hasResult) {
+        noResult.style.display = 'none';
+        return;
+    }
+
+    noResult.innerHTML = `
+        <p class="noResultMessage"><strong>"${search}"</strong>에 대한 검색 결과가 없습니다.</p>
+    `;
+
+    noResult.style.display = 'block';
+}
