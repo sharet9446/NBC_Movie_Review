@@ -29,7 +29,7 @@ document.querySelector('#searchForm').addEventListener('keyup', (event) => {
     noResultMessage(hasResult);
 });
 
-// 검색 결과 메시지 개선
+// 검색 결과 메시지
 function noResultMessage(hasResult) {
     const search = new URLSearchParams(window.location.search).get('search');
     const noResult = document.querySelector('#noResultsMessage');

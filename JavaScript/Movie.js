@@ -14,34 +14,21 @@ const options = {
     }
 };
 
-for (let i = 1; i < totalPages; i++) {
+for (let i = 1; i <= totalPages; i++) {
 
     let url = `${baseUrl}${mediaType}/${category}?language=${language}&page=${i}&timestamp=${Date.now()}`; // API 주소
-
+    
     // API 명세에 따라  options를  fetch()의 ()에 추가함
     fetch(url, options)
         .then(res => res.json())
         .then(data => {
-            // ( 순서대로 )
-            /***
-                영화 이미지 : poster_path
-                영화 제목 : original_title(영어 제목) title(한글 제목)
-                영화 평점 : vote_average
-
-                (1)  document.querySelector('#movieListView')
-                    해당 HTML 문서 ,index.html 의  movieListView  아이디선택자에 접근
-
-                (2)  .innerHTML 
-                    요소내에  HTML을 가져오는 메소드인데 , 여기에서는 가져와서 붙여준다. 
-                    
-            */
-            let movieLists = data.results;
+            let movieLists = data.results; // 
 
             // movieLists 배열에 있는 데이터를 forEach() 메소드로 순회하면서 movieListView에 추가
             movieLists.forEach(movieList => {
                 const movieCardHTML = `
-                <div class="movieCard">
-                <img src="https://image.tmdb.org/t/p/original${movieList.poster_path} " alt="${movieList.title}" class="movieImg">
+                <div class="movieCard" data-id="${movieList.id}">
+                <img src="https://image.tmdb.org/t/p/original${movieList.poster_path}" alt="${movieList.title}" class="movieImg">
                 
                 <div class="movieCarte">
                 <p class="movieTitle">${movieList.title}</p> 
@@ -50,8 +37,11 @@ for (let i = 1; i < totalPages; i++) {
                 </div>
                 `;
                 movieListView.insertAdjacentHTML('beforeend', movieCardHTML);
+                movieClick(movieList)  
             })
+            
         })
+        
         // 크롬 브라우저 개발자 도구 console 창에 에러 출력 
         .catch(error => console.error(error));
 }
