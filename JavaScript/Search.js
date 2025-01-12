@@ -1,5 +1,4 @@
 
-
 document.querySelector('#searchForm').addEventListener('keyup', (event) => {
     const movieTitle = document.querySelectorAll('.movieTitle');
     const searchName = event.target.value.replace(/\s/g, "").toLowerCase();
