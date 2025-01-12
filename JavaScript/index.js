@@ -3,8 +3,8 @@ const currentTimeElement = document.querySelector('footer p');
 document.querySelector('title').textContent = `The Movie Top ${totalPages * 20}`; // 웹 사이트 이름
 document.querySelector('#siteName h1').textContent = `TMT${totalPages * 20}`; // 웹 페이지 이름름
 
-// footer에 넣을 현재 시각각
-function updateTime() {
+// footer에 넣을 현재 시간
+function footerTime() {
     const now = new Date();
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -14,7 +14,7 @@ function updateTime() {
     const seconds = String(now.getSeconds()).padStart(2, '0');
 
     const formattedTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-    currentTimeElement.textContent = `© ${formattedTime} Movie`;
+    currentTimeElement.textContent = `© ${formattedTime} Movie Rank`;
 }
 
-updateTime();
+footerTime();

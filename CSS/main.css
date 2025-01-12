@@ -34,7 +34,7 @@
     flex-wrap: wrap;
     gap: 10px;
     padding: 10px;
-    
+
 }
 
 .movieCard {
@@ -42,7 +42,7 @@
     color: #ffffff;
     margin: 20px;
     padding: 20px;
-    border-radius: 20px;
+    border-radius: 15px;
     box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 280px;
@@ -76,10 +76,22 @@
     }
 }
 
+.rankBadge {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: gold;
+    color: black;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
 .movieImg {
     width: 100%;
     height: 320px;
-    border-radius: 15px;
+    border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -93,7 +105,8 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    color: #ffcc29;;
+    color: #ffcc29;
+    ;
 }
 
 .movieRate {

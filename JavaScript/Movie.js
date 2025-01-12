@@ -3,7 +3,7 @@ const baseUrl = 'https://api.themoviedb.org/3/'; //  API 주소
 const mediaType = 'movie' // TV면 'tv', 영화면 'movie'로 변경
 const category = 'popular' // 인기순이면 'popular', 최신순이면 'now_playing'로 변경
 const language = 'ko-KR'; // 영어면 'en-US', 한국어면 'ko-KR'로 변경
-const totalPages = 6; // 가져올 페이지 수
+const totalPages = 5; // 가져올 페이지 수 (5 = 100개, 10 = 200개)
 const movieListView = document.querySelector('#movieListView'); // movieListView 아이디 선택자에 접근
 
 let ranking = 1; // 랭킹 순위
@@ -20,7 +20,8 @@ const options = {
 
 async function fetchMoviesInOrder() {
     for (let i = 1; i <= totalPages; i++) {
-        let url = `${baseUrl}${mediaType}/${category}?language=${language}&page=${i}&timestamp=${Date.now()}`; // API 주소
+        let url = `${baseUrl}${mediaType}/${category}?language=${language}&page=${i}`; // API 주소
+        // &timestamp=${Date.now()}
         // API 명세에 따라  options를  fetch()의 ()에 추가함
         try {
             const res = await fetch(url, options)
@@ -30,10 +31,11 @@ async function fetchMoviesInOrder() {
             movieLists.forEach(movieList => {
                 const movieCardHTML = `
                 <div class="movieCard" data-id="${movieList.id}">
+                    <div class="rankBadge">${ranking}</div>
                     <img src="https://image.tmdb.org/t/p/original${movieList.poster_path}" alt="${movieList.title}" class="movieImg">
                 
                     <div class="movieCarte">
-                        <p class="movieTitle">${ranking}위 ${movieList.title}</p> 
+                        <p class="movieTitle">${movieList.title}</p> 
                 
                         <span class="movieRate">
                         <small>평점: ${movieList.vote_average}</small>
