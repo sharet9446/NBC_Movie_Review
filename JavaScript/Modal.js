@@ -6,11 +6,6 @@ function movieClick(mol) {
     document.querySelectorAll('.movieCard').forEach(mod => {
         mod.addEventListener('click', event => {
             if (event.currentTarget.dataset.id == mol.id) {
-                mol.backdrop_path
-                mol.title
-                mol.overview
-                mol.release_date
-                mol.vote_average
                 modalHTML = `
                     <img src="https://image.tmdb.org/t/p/original${mol.backdrop_path}" alt="${mol.title}"
                         class="modalImage">
@@ -53,5 +48,13 @@ function movieClick(mol) {
 
 document.querySelector('.close').addEventListener('click', (event) => {
     event.target.closest('.modal').style.display = 'none';
-    modalAdd.innerHTML = ``
+    modalAdd.innerHTML = '';
 })
+
+window.addEventListener('click', (event) => {
+    console.log(event.target)
+    if (event.target === modal) {
+        modal.style.display = 'none';
+        modalAdd.innerHTML = '';
+    }
+});
