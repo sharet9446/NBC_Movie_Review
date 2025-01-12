@@ -51,7 +51,7 @@ document.querySelector('.close').addEventListener('click', (event) => {
     modalAdd.innerHTML = '';
 })
 
-window.addEventListener('click', (event) => {
+modal.addEventListener('click', (event) => {
     if (event.target === modal) {
         modal.style.display = 'none';
         modalAdd.innerHTML = '';
