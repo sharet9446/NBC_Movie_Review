@@ -36,7 +36,6 @@ function openModal(movie) {
                 </li>
                 <button class="bookAdd">북마크 추가</button>
             </ul>
-            <p id="movieDetails"></p>
         `;
 
     const modalImage = document.querySelector('.modalImage')

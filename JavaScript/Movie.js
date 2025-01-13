@@ -18,14 +18,13 @@ const options = {
     }
 };
 
-async function fetchMoviesInOrder() {
-    for (let i = 1; i <= totalPages; i++) {
-        let url = `${baseUrl}${mediaType}/${category}?language=${language}&page=${i}`; // API 주소
-        // &timestamp=${Date.now()}
-        // API 명세에 따라  options를  fetch()의 ()에 추가함
-        try {
-            const res = await fetch(url, options)
-            const data = await res.json()
+for (let i = 1; i <= totalPages; i++) {
+    let url = `${baseUrl}${mediaType}/${category}?language=${language}&page=${i}`; // API 주소 &timestamp=${Date.now()}
+    // API 명세에 따라  options를  fetch()의 ()에 추가함
+
+    fetch(url, options)
+        .then(res => res.json())
+        .then(data => {
             let movieLists = data.results; // 
             // movieLists 배열에 있는 데이터를 forEach() 메소드로 순회하면서 movieListView에 추가
             movieLists.forEach(movieList => {
@@ -49,11 +48,7 @@ async function fetchMoviesInOrder() {
             })
 
             // 크롬 브라우저 개발자 도구 console 창에 에러 출력 
-        } catch (error) {
-            console.error(`페이지 ${i}에서 오류 발생:`, error)
-        }
-
-    }
+        }).catch(error => console.error(`페이지 ${i}에서 오류 발생:`, error))
 }
 
-fetchMoviesInOrder();
+
