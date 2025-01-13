@@ -1,17 +1,18 @@
 const modalAdd = document.querySelector('#modalAdd')
 const modal = document.querySelector('.modal')
 
-
 function movieClick(movieList) {
-    const movieCards = document.querySelectorAll('.movieCard');
     
+    const movieCards = document.querySelectorAll('.movieCard');
     movieCards.forEach(card => {
         card.addEventListener('click', event => {
-            
-            const clickedId = event.currentTarget.dataset.id;
-            if (clickedId == movieList.id) {
-                openModal(movieList)
-            }
+
+            const clickedId = Number(event.currentTarget.dataset.id);
+            movieList.forEach(movieNumber => {
+                if (clickedId == movieNumber.number) {
+                    openModal(movieNumber)
+                }
+            })
         })
     })
 }

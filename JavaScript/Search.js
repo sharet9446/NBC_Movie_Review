@@ -1,7 +1,17 @@
+// 디바운스 함수 정의
+function debounce(func, delay) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+}
 
-document.querySelector('#searchForm').addEventListener('keyup', (event) => {
+// 검색 기능
+function searchMovies(event) {
     const movieTitle = document.querySelectorAll('.movieTitle');
     const searchName = event.target.value.replace(/\s/g, "").toLowerCase();
+    
     let hasResult = false;
 
     // URL 업데이트
@@ -13,7 +23,8 @@ document.querySelector('#searchForm').addEventListener('keyup', (event) => {
     }
 
     // 검색 기능
-    movieTitle.forEach(title => {
+    for (let i = 0; i < movieTitle.length; i++) {
+        const title = movieTitle[i];
         const trimTitle = title.innerText.replace(/[\s=:;/(){}'"|*!@.#$%&]/g, "").toLowerCase();
         const movieCard = title.closest('.movieCard');
 
@@ -23,10 +34,10 @@ document.querySelector('#searchForm').addEventListener('keyup', (event) => {
         } else {
             movieCard.style.display = 'none';
         }
-    });
+    };
 
     noResultMessage(hasResult);
-});
+};
 
 // 검색 결과 메시지
 function noResultMessage(hasResult) {
@@ -38,9 +49,8 @@ function noResultMessage(hasResult) {
         return;
     }
 
-    noResult.innerHTML = `
-        <p class="noResultMessage"><strong>"${search}"</strong>에 대한 검색 결과가 없습니다.</p>
-    `;
-
+    noResult.innerHTML = `<p class="noResultMessage"><strong>"${search}"</strong>에 대한 검색 결과가 없습니다.</p>`;
     noResult.style.display = 'block';
 }
+
+document.querySelector('#searchForm').addEventListener('keyup', debounce(searchMovies, 200))
