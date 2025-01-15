@@ -3,10 +3,10 @@ const baseUrl = 'https://api.themoviedb.org/3/'; //  API 주소
 const mediaType = 'movie' // TV면 'tv', 영화면 'movie'로 변경
 const category = 'popular' // 인기순이면 'popular', 최신순이면 'now_playing'로 변경
 const language = 'ko-KR'; // 영어면 'en-US', 한국어면 'ko-KR'로 변경
-const totalPages = 5; // 가져올 페이지 수 (5 = 100개, 10 = 200개)
-const movieListView = document.querySelector('#movieListView'); // movieListView 아이디 선택자에 접근
+const includeAdult = false; // 
+let totalPages = 5; // 가져올 페이지 수 (5 = 100개, 10 = 200개)
+const movieMain = document.querySelector('#movieMain'); // movieMain 아이디 선택자에 접근
 let movieData = []; // 영화 데이터 저장
-let ranking = 1; // 랭킹 순위
 
 document.querySelector('#movieList h1').textContent = `실시간 영화 TOP ${totalPages * 20}`
 
@@ -31,28 +31,30 @@ async function fetchMoviesInOrder() {
                 movieData.push(movieList)
             })
         } catch (error) { console.error(`페이지 ${i}에서 오류 발생:`, error) }
+
     }
     // movieData 배열을 순회하며 HTML 문자열 생성
-    const movieHTML = movieData.map((movie, i) => `
-                <div class="movieCard" data-id="${i}">
-            <div class="rankBadge">${ranking++}</div>
-            <img src="https://image.tmdb.org/t/p/original${movie.poster_path}" alt="${movie.title}" class="movieImg">
-            <div class="movieCarte">
-                <p class="movieTitle">${movie.title}</p> 
-                <span class="movieRate">
-                <small>평점: ${movie.vote_average}</small>
-                </span>
-            </div>
-        </div>
-        `).join('');
-    movieListView.innerHTML = movieHTML;  // 생성된 HTML을 movieListView에 추가
-
-    // movieData에 number : i 키값 추가
-    movieData.map((movieDataAddIndex, i) => {
-        movieDataAddIndex.number = i
-    })
-    movieClick(movieData)
+    cardAdd(movieData, movieMain)
+    movieClick(movieData, movieMain)
 }
 
-fetchMoviesInOrder() // 영화 데이터를 가져오는 함수 호출
+function cardAdd(cardData, domAdd) {
+    cardDatas = cardData.map((movie, i) => `
+        <div class="movieCard" data-id="${i}">
+        <img src="https://image.tmdb.org/t/p/original${movie.poster_path}" alt="${movie.title}" class="movieImg">
+        <div class="movieCarte">
+        <p class="movieTitle">${movie.title}</p> 
+        <span class="movieRate">
+        <small>평점: ${movie.vote_average}</small>
+        </span>
+        </div>
+        </div>
+`).join('');
+    domAdd.innerHTML = cardDatas;  // 생성된 HTML을 movieMain 추가
 
+    // movieData에 number : i 키값 추가
+    cardData.map((movieDataAddIndex, i) => {
+        movieDataAddIndex.number = i
+    })
+}
+fetchMoviesInOrder() // 영화 데이터를 가져오는 함수 호출
