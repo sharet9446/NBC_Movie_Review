@@ -1,6 +1,7 @@
 const modalAdd = document.querySelector('#modalAdd'); // 모달 내용이 추가될 요소 선택
 const modal = document.querySelector('.modal'); // 모달 요소 선택
 
+
 // 영화 카드 클릭 이벤트를 설정하는 함수
 function movieClick(movieList, movieChoice) {
     movieChoice.addEventListener('click', event => {
@@ -45,6 +46,7 @@ function openModal(movie) {
     `;
 
     modal.style.display = 'block'; // 모달 열기
+    bookadd()
 }
 
 // 모달 닫기 버튼 클릭 이벤트 설정
