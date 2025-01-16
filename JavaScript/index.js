@@ -1,11 +1,8 @@
 // 페이지 제목을 설정
 document.querySelector('title').textContent = `The Movie Top ${totalPages * 20}`;
 
-// 사이트 이름을 설정
-document.querySelector('#siteName h1').textContent = `TMT${totalPages * 20}`;
-
 // 현재 시간을 표시할 요소 선택
-const currentTimeElement = document.querySelector('footer p');
+const CURRENTTIMEELEMENT = document.querySelector('footer p');
 
 // footer에 넣을 현재 시간을 포맷팅하여 설정하는 함수
 function footerTime() {
@@ -19,7 +16,7 @@ function footerTime() {
 
     // 포맷팅된 시간을 footer에 설정
     const formattedTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-    currentTimeElement.textContent = `© ${formattedTime} Movie Rank`;
+    CURRENTTIMEELEMENT.textContent = `© ${formattedTime} Movie Rank`;
 }
 
 // footerTime 함수 호출하여 현재 시간 설정

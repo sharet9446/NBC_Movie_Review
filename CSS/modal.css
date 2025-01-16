@@ -57,13 +57,13 @@
     text-align: left;
 }
 
-.modalName h1,
-.modalDate h4,
-.modalRate h4 {
+#modalName h1,
+#modalDate h4,
+#modalRate h4 {
     margin: 0;
 }
 
-.bookAdd {
+.bookmarkAdd {
     width: 100%;
     text-align: center;
     padding: 15px 25px;
@@ -73,7 +73,7 @@
     cursor: pointer;
     font-size: 18px;
     color: #ffffff;
-    background-image: linear-gradient(45deg, #6a11cb, #2575fc); /* 퍼플-블루 그라데이션 */
+    background-image: linear-gradient(45deg, #6a11cb, #2575fc);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
