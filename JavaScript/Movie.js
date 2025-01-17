@@ -43,8 +43,8 @@ async function fetchMoviesInOrder() {
 // 영화 카드를 생성하는 함수
 function cardAdd(cardData, domAdd) {
 
-    cardDatas = cardData.map((movie, i) => `
-        <div class="movieCard" data-id1="${i}" data-id2="${movie.id}">
+    const cardDatas = cardData.map((movie, i) => `
+        <div class="movieCard" data-index="${i}" data-id="${movie.id}">
             <img src="https://image.tmdb.org/t/p/original${movie.poster_path}" alt="${movie.title}" class="movieImg">
             <div class="movieCarte">
                 <p class="movieTitle">${movie.title}</p> 
@@ -57,10 +57,10 @@ function cardAdd(cardData, domAdd) {
 
     domAdd.innerHTML = cardDatas;
 
-    // movieData에 number : i 키값 추가
-    cardData.map((movieDataAddIndex, i) => {
-        movieDataAddIndex.number = i
-    })
+    // movieData에 number : i 키 추가
+    cardData.forEach((movie, i) => {
+        movie.number = i;
+    });
 }
 
 fetchMoviesInOrder() // 영화 데이터를 가져오는 함수 호출

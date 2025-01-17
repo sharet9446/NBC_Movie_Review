@@ -3,13 +3,14 @@ const MODAL = document.querySelector('.modal'); // 모달 요소 선택
 
 
 // 영화 카드 클릭 이벤트를 설정하는 함수
-function movieClick(movieList, movieChoice) {
+function movieClick(modalList, movieChoice) {
     movieChoice.addEventListener('click', event => {
         const card = event.target.closest('.movieCard');
         if (!card) return;
 
-        const clickedID = Number(card.dataset.id1);
-        const selectedMovie = movieList[clickedID];
+        const clickedID = card.dataset.id;
+
+        const selectedMovie = modalList.find(movie => String(movie.id) === clickedID);
 
         if (!selectedMovie) {
             console.error(`영화를 찾을 수 없습니다. ID: ${clickedID}`);
